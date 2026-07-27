@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Reveal from "@/components/animations/Reveal";
 import Card from "@/components/ui/Card";
 
@@ -16,28 +17,28 @@ export default function PortfolioSection() {
       title: "Nova AI Analytics",
       category: "AI Solutions",
       description: "An intelligent telemetry dashboard featuring 17-stage sandbox execution graphs and predictive usage spikes.",
-      gradient: "from-blue-600 to-cyan-500",
+      image: "/portfolio/nova_ai_analytics.jpg",
       tag: "Next.js + Python",
     },
     {
       title: "Aura Design System",
       category: "UI/UX & Web",
       description: "A token-driven Figma-to-code design system built for high-scale SaaS products with accessibility compliance.",
-      gradient: "from-pink-600 to-purple-600",
+      image: "/portfolio/aura_design_system.jpg",
       tag: "Tailwind CSS",
     },
     {
       title: "Vortex Payments Engine",
       category: "SaaS",
       description: "A zero-latency transaction ledger utilizing optimistic state caching and distributed queue architectures.",
-      gradient: "from-amber-500 to-orange-600",
+      image: "/portfolio/vortex_payments.jpg",
       tag: "NestJS + Redis",
     },
     {
       title: "Zephyr Cloud Console",
       category: "SaaS",
       description: "Ephemeral deployment manager fronted by global edge networks, providing preview builds on every commit.",
-      gradient: "from-emerald-500 to-teal-600",
+      image: "/portfolio/zephyr_cloud.jpg",
       tag: "Go + Kubernetes",
     },
   ];
@@ -60,7 +61,7 @@ export default function PortfolioSection() {
             </div>
 
             {/* Filtering Tabs */}
-            <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-2xl w-fit border border-slate-200/50 dark:border-slate-800/50">
+            <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl w-fit border border-slate-200/50 dark:border-slate-800/50">
               {categories.map((cat) => (
                 <button
                   key={cat}
@@ -94,16 +95,24 @@ export default function PortfolioSection() {
                 <Card 
                   className="group flex flex-col justify-between h-full hover:border-primary/20 dark:hover:border-primary/20"
                 >
-                  {/* Visual Gradient Card */}
-                  <div className={`w-full h-56 rounded-2xl bg-gradient-to-tr ${project.gradient} mb-6 relative overflow-hidden flex items-center justify-center`}>
-                    <div className="absolute inset-0 bg-black/10 mix-blend-overlay" />
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer shadow-lg hover:bg-white/30 transition-colors duration-300"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </motion.div>
+                  {/* Visual Image Card with Next.js Image optimization */}
+                  <div className="w-full h-56 rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center bg-slate-100 dark:bg-slate-900">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-w-7xl) 50vw, 100vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center z-10">
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer shadow-lg hover:bg-white/30 transition-colors duration-300"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </motion.div>
+                    </div>
                   </div>
 
                   {/* Info */}

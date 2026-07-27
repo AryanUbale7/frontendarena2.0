@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 export default function TrustedSection() {
@@ -28,7 +26,6 @@ export default function TrustedSection() {
         
         {/* Scrolling flex row */}
         <div className="flex space-x-12 items-center whitespace-nowrap animate-infinite-scroll py-2">
-          {/* Double company array to allow seamless scrolling loop */}
           {[...companies, ...companies].map((company, index) => (
             <div
               key={index}
