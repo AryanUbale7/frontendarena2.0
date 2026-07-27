@@ -3,6 +3,7 @@
 import React from "react";
 import { Laptop, Cpu, Palette, Layout, Server, Code, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 export default function Services() {
   const services = [
@@ -59,16 +60,18 @@ export default function Services() {
   return (
     <section id="services" className="py-24 bg-slate-50/20 dark:bg-slate-900/5 relative">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="max-w-2xl mb-20">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Our Expertise</h2>
-          <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.12]">
-            Engineering Premium Digital Products.
-          </p>
-          <p className="mt-4 text-paragraph text-sm sm:text-base leading-relaxed">
-            We operate at the intersection of design, engineering, and artificial intelligence, helping companies launch world-class products.
-          </p>
-        </div>
+        {/* Section Header with Reveal */}
+        <Reveal>
+          <div className="max-w-2xl mb-20">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Our Expertise</h2>
+            <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.12]">
+              Engineering Premium Digital Products.
+            </p>
+            <p className="mt-4 text-paragraph text-sm sm:text-base leading-relaxed">
+              We operate at the intersection of design, engineering, and artificial intelligence, helping companies launch world-class products.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

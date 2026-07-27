@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("All");
@@ -47,37 +48,39 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="py-24 relative bg-grid-pattern">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
-          <div className="max-w-xl">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Our Work</h2>
-            <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.12]">
-              Showcasing Engineering Craftsmanship.
-            </p>
-          </div>
+        {/* Section Header with Reveal */}
+        <Reveal>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+            <div className="max-w-xl">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Our Work</h2>
+              <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.12]">
+                Showcasing Engineering Craftsmanship.
+              </p>
+            </div>
 
-          {/* Filtering Tabs */}
-          <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-2xl w-fit border border-slate-200/50 dark:border-slate-800/50">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveTab(cat)}
-                className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-300 ${
-                  activeTab === cat
-                    ? "bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm"
-                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            {/* Filtering Tabs */}
+            <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl w-fit border border-slate-200/50 dark:border-slate-800/50">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveTab(cat)}
+                  className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-300 ${
+                    activeTab === cat
+                      ? "bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm"
+                      : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Projects Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.95 }}

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 export default function FAQ() {
   const faqs = [
@@ -33,13 +34,15 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-24 relative bg-slate-50/20 dark:bg-slate-900/5">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">FAQ</h2>
-          <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
-            Frequently Asked Questions.
-          </p>
-        </div>
+        {/* Section Header with Reveal */}
+        <Reveal>
+          <div className="text-center mb-16">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">FAQ</h2>
+            <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+              Frequently Asked Questions.
+            </p>
+          </div>
+        </Reveal>
 
         {/* FAQ Accordion List */}
         <div className="space-y-4">

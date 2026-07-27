@@ -3,6 +3,7 @@
 import React from "react";
 import { Search, Compass, Code, ShieldCheck, Rocket, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 export default function Process() {
   const steps = [
@@ -47,16 +48,18 @@ export default function Process() {
   return (
     <section id="process" className="py-24 relative bg-slate-50/20 dark:bg-slate-900/5">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="max-w-2xl text-center mx-auto mb-20">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Our Process</h2>
-          <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
-            How We Bring Ideas to Life.
-          </p>
-          <p className="mt-4 text-paragraph text-sm sm:text-base leading-relaxed">
-            A systematic, sprint-driven methodology optimized for engineering velocity and bulletproof stability.
-          </p>
-        </div>
+        {/* Section Header with Reveal */}
+        <Reveal>
+          <div className="max-w-2xl text-center mx-auto mb-20">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Our Process</h2>
+            <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+              How We Bring Ideas to Life.
+            </p>
+            <p className="mt-4 text-paragraph text-sm sm:text-base leading-relaxed">
+              A systematic, sprint-driven methodology optimized for engineering velocity and bulletproof stability.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">

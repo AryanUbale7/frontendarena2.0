@@ -1,22 +1,23 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { ArrowRight, Code, Sparkles, Shield, Cpu, Layers } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Counter from "@/components/Counter";
+import Magnetic from "@/components/Magnetic";
 
 export default function Hero() {
   const stats = [
-    { value: "150+", label: "Projects Completed" },
-    { value: "50+", label: "Clients Worldwide" },
-    { value: "8+", label: "Years Experience" },
+    { value: 150, suffix: "+", label: "Projects Completed" },
+    { value: 50, suffix: "+", label: "Clients Worldwide" },
+    { value: 8, suffix: "+", label: "Years Experience" },
   ];
 
-  // Mouse tilt parallax hook for premium mockup box
+  // Mouse tilt parallax
   const cardRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   
-  // Smooth spring physics setup
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [15, -15]), { stiffness: 150, damping: 20 });
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-15, 15]), { stiffness: 150, damping: 20 });
 
@@ -35,6 +36,28 @@ export default function Hero() {
     x.set(0);
     y.set(0);
   };
+
+  // Text Reveal animations config
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }
+    },
+  };
+
+  const headingText = "Building Modern Digital Experiences";
 
   return (
     <section className="relative min-h-screen pt-36 pb-24 overflow-hidden flex flex-col justify-center bg-grid-pattern">
@@ -58,24 +81,29 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Heading */}
+          {/* Heading with Word Reveal */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.08] mb-6 tracking-tight"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.08] mb-6 tracking-tight flex flex-wrap"
           >
-            Building Modern <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Digital Experiences
-            </span>
+            {headingText.split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                variants={wordVariants}
+                className={`mr-3 ${word === "Digital" || word === "Experiences" ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary" : ""}`}
+              >
+                {word}
+              </motion.span>
+            ))}
           </motion.h1>
 
           {/* Paragraph */}
           <motion.p
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-base sm:text-lg text-paragraph leading-relaxed mb-8 max-w-xl"
           >
             We partner with tech-forward brands to engineer high-performance SaaS applications, custom web design, and cutting-edge AI integrations built with premium craftsmanship.
@@ -85,18 +113,22 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-12"
           >
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="#contact"
-              className="group inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300"
-            >
-              <span>Start Your Project</span>
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
+            {/* Magnetic primary button */}
+            <Magnetic>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href="#contact"
+                className="group inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 w-full sm:w-auto"
+              >
+                <span>Start Your Project</span>
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
+            </Magnetic>
+            
             <motion.a
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -107,17 +139,17 @@ export default function Hero() {
             </motion.a>
           </motion.div>
 
-          {/* Statistics Grid */}
+          {/* Statistics Grid with Counter */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
             className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200/50 dark:border-slate-800/50"
           >
             {stats.map((stat, index) => (
               <div key={index} className="flex flex-col">
-                <span className="font-numbers font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white mb-1">
-                  {stat.value}
+                <span className="text-2xl sm:text-3xl text-slate-900 dark:text-white mb-1">
+                  <Counter value={stat.value} suffix={stat.suffix} />
                 </span>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                   {stat.label}
@@ -127,7 +159,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Mockup Showcase Graphics with 3D Tilt Parallax */}
+        {/* Mockup Showcase Graphics */}
         <div className="lg:col-span-5 relative h-[480px] w-full flex items-center justify-center">
           <motion.div
             ref={cardRef}
@@ -150,7 +182,6 @@ export default function Hero() {
 
             {/* Core mockup content */}
             <div className="space-y-6" style={{ transform: "translateZ(40px)" }}>
-              {/* Graphic line chart mockup */}
               <div className="h-4 w-32 bg-slate-100 dark:bg-slate-900 rounded-md mb-4" />
               
               <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200/20 dark:border-slate-800/20">
@@ -212,7 +243,7 @@ export default function Hero() {
             className="absolute -bottom-4 right-0 p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-xl border border-slate-200/40 dark:border-slate-800/40 flex items-center space-x-3 pointer-events-none"
           >
             <div className="w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-500">
-              <Cpu className="w-4 h-4" />
+              <Cpu className="w-4 h-4 animate-spin-slow" />
             </div>
             <div className="space-y-0.5">
               <p className="text-[9px] uppercase tracking-wider font-extrabold text-slate-400">AI Compute</p>

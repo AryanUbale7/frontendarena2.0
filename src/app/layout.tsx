@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter, Space_Grotesk } from "next/font/google";
+import Cursor from "@/components/Cursor";
+import LoadingScreen from "@/components/LoadingScreen";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -53,7 +55,9 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakartaSans.variable} ${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-white dark:bg-[#030712] text-slate-900 dark:text-slate-50 transition-colors duration-300">
+      <body className="min-h-full flex flex-col font-sans bg-white dark:bg-[#030712] text-slate-900 dark:text-slate-50 transition-colors duration-300 overflow-x-hidden">
+        <LoadingScreen />
+        <Cursor />
         {children}
       </body>
     </html>
