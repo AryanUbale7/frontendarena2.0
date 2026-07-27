@@ -17,12 +17,11 @@ export default function Counter({ value, suffix = "" }: CounterProps) {
 
     const node = ref.current;
     
-    // Animate from 0 to value
     const controls = animate(0, value, {
       duration: 1.8,
       ease: [0.16, 1, 0.3, 1],
-      onUpdate(value) {
-        node.textContent = Math.floor(value).toString() + suffix;
+      onUpdate(val) {
+        node.textContent = Math.floor(val).toString() + suffix;
       },
     });
 

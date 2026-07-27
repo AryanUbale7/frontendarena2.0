@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 
-export default function TrustedBy() {
+export default function TrustedSection() {
   const companies = [
     { name: "Vercel", type: "Hosting" },
     { name: "Stripe", type: "Payments" },
@@ -16,7 +15,7 @@ export default function TrustedBy() {
   ];
 
   return (
-    <section className="py-12 border-y border-slate-200/50 dark:border-slate-800/50 overflow-hidden bg-slate-50/50 dark:bg-slate-900/10">
+    <section className="py-12 border-y border-slate-200/50 dark:border-slate-800/50 overflow-hidden bg-slate-50/50 dark:bg-slate-950/10">
       <div className="max-w-7xl mx-auto px-6 mb-6">
         <p className="text-center text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
           Trusted by engineers and teams at forward-thinking companies

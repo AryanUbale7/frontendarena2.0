@@ -7,7 +7,6 @@ export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Mimic content load time
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
@@ -25,9 +24,7 @@ export default function LoadingScreen() {
           }}
           className="fixed inset-0 z-[100] bg-[#030712] flex flex-col items-center justify-center"
         >
-          {/* Logo animation */}
           <div className="relative flex flex-col items-center space-y-6">
-            {/* Glowing ring */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ 
@@ -42,7 +39,6 @@ export default function LoadingScreen() {
               className="absolute -inset-4 rounded-full bg-primary/20 blur-md"
             />
 
-            {/* Logo box */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -52,7 +48,6 @@ export default function LoadingScreen() {
               F
             </motion.div>
 
-            {/* Text Reveal */}
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -62,7 +57,6 @@ export default function LoadingScreen() {
               Frontend<span className="text-primary">Arena</span>
             </motion.div>
 
-            {/* Small horizontal loading line */}
             <div className="w-32 h-[2px] bg-slate-800 rounded-full overflow-hidden">
               <motion.div
                 initial={{ x: "-100%" }}

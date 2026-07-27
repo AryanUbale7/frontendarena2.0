@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Reveal from "@/components/Reveal";
+import Reveal from "@/components/animations/Reveal";
+import Card from "@/components/ui/Card";
 
-export default function Portfolio() {
+export default function PortfolioSection() {
   const [activeTab, setActiveTab] = useState("All");
 
   const categories = ["All", "SaaS", "AI Solutions", "UI/UX & Web"];
@@ -59,7 +60,7 @@ export default function Portfolio() {
             </div>
 
             {/* Filtering Tabs */}
-            <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl w-fit border border-slate-200/50 dark:border-slate-800/50">
+            <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-2xl w-fit border border-slate-200/50 dark:border-slate-800/50">
               {categories.map((cat) => (
                 <button
                   key={cat}
@@ -77,7 +78,7 @@ export default function Portfolio() {
           </div>
         </Reveal>
 
-        {/* Projects Grid */}
+        {/* Projects Grid using Reusable Card UI primitive */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -88,48 +89,52 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 key={project.title}
-                className="group relative rounded-3xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-primary/20 dark:hover:border-primary/20 transition-all duration-500"
+                className="h-full"
               >
-                {/* Visual Gradient Card */}
-                <div className={`w-full h-56 rounded-2xl bg-gradient-to-tr ${project.gradient} mb-6 relative overflow-hidden flex items-center justify-center`}>
-                  <div className="absolute inset-0 bg-black/10 mix-blend-overlay" />
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer shadow-lg hover:bg-white/30 transition-colors duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </motion.div>
-                </div>
-
-                {/* Info */}
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-bold tracking-wider uppercase text-primary">
-                      {project.category}
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-900 text-[10px] font-semibold text-paragraph border border-slate-200/20 dark:border-slate-800/20 font-numbers">
-                      {project.tag}
-                    </span>
+                <Card 
+                  className="group flex flex-col justify-between h-full hover:border-primary/20 dark:hover:border-primary/20"
+                >
+                  {/* Visual Gradient Card */}
+                  <div className={`w-full h-56 rounded-2xl bg-gradient-to-tr ${project.gradient} mb-6 relative overflow-hidden flex items-center justify-center`}>
+                    <div className="absolute inset-0 bg-black/10 mix-blend-overlay" />
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer shadow-lg hover:bg-white/30 transition-colors duration-300"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </motion.div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                    {project.title}
-                  </h3>
+                  {/* Info */}
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-[10px] font-bold tracking-wider uppercase text-primary">
+                        {project.category}
+                      </span>
+                      <span className="px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-900 text-[10px] font-semibold text-paragraph border border-slate-200/20 dark:border-slate-800/20 font-numbers">
+                        {project.tag}
+                      </span>
+                    </div>
 
-                  <p className="text-sm text-paragraph leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                </div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                      {project.title}
+                    </h3>
 
-                {/* Explore Case Study */}
-                <a
-                  href="#contact"
-                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors duration-300"
-                >
-                  <span>Explore Case Study</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                    <p className="text-sm text-paragraph leading-relaxed mb-6">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Explore Case Study */}
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors duration-300"
+                  >
+                    <span>Explore Case Study</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </a>
+                </Card>
               </motion.div>
             ))}
           </AnimatePresence>

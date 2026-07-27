@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Reveal from "@/components/Reveal";
+import Reveal from "@/components/animations/Reveal";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 
-export default function CTA() {
+export default function CTASection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -44,26 +46,25 @@ export default function CTA() {
               Get in touch to discuss your product architecture, design token system, or custom software requirements.
             </p>
 
-            {/* Contact Input Form */}
+            {/* Contact Input Form using Reusable Input & Button UI primitives */}
             {!submitted ? (
               <form onSubmit={handleSubmit} className="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-                <input
+                <Input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className="flex-grow px-5 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-450 dark:placeholder-slate-500 focus:outline-none focus:ring-4 focus:ring-primary/15 focus:border-primary text-sm transition-all duration-355"
+                  className="flex-grow focus:ring-primary/15"
                 />
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <Button
+                  variant="primary"
                   type="submit"
-                  className="inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 cursor-pointer"
+                  className="px-6 py-3.5 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20"
                 >
                   <span>Let's Talk</span>
                   <ArrowRight className="w-4 h-4" />
-                </motion.button>
+                </Button>
               </form>
             ) : (
               <motion.div

@@ -10,7 +10,6 @@ export default function Cursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // Smooth spring configuration
   const springConfig = { stiffness: 400, damping: 28 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);

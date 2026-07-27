@@ -1,14 +1,14 @@
 import React from "react";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import TrustedBy from "@/components/TrustedBy";
-import Services from "@/components/Services";
-import Portfolio from "@/components/Portfolio";
-import Process from "@/components/Process";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/common/Navbar";
+import HeroSection from "@/components/sections/HeroSection";
+import TrustedSection from "@/components/sections/TrustedSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
+import ProcessSection from "@/components/sections/ProcessSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import FAQSection from "@/components/sections/FAQSection";
+import CTASection from "@/components/sections/CTASection";
+import Footer from "@/components/common/Footer";
 
 export default function Home() {
   return (
@@ -19,28 +19,28 @@ export default function Home() {
       {/* Main Content Layout */}
       <main className="flex-grow">
         {/* Hero Section */}
-        <Hero />
+        <HeroSection />
 
         {/* Logo Cloud Trusted By */}
-        <TrustedBy />
+        <TrustedSection />
 
         {/* Services Grid */}
-        <Services />
+        <ServicesSection />
 
         {/* Project Showcase Portfolio */}
-        <Portfolio />
+        <PortfolioSection />
 
         {/* Timeline Process */}
-        <Process />
+        <ProcessSection />
 
         {/* Customer Reviews Testimonials */}
-        <Testimonials />
+        <TestimonialsSection />
 
         {/* Accordion FAQ */}
-        <FAQ />
+        <FAQSection />
 
         {/* Dynamic CTA Form */}
-        <CTA />
+        <CTASection />
       </main>
 
       {/* Multi-column Premium Footer */}

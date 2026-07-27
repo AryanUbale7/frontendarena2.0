@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Button from "@/components/ui/Button";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +52,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-550 ease-in-out ${
           isScrolled
             ? "bg-white/80 dark:bg-[#030712]/80 backdrop-blur-xl py-3 shadow-md border-b border-slate-200/20 dark:border-slate-800/20"
             : "bg-transparent py-6"
@@ -101,16 +102,17 @@ export default function Navbar() {
               {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </motion.button>
 
-            {/* Premium Animated CTA */}
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="#contact"
-              className="group inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-xs shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300"
+            {/* Premium CTA using Reusable UI Button */}
+            <Button
+              onClick={() => {
+                const element = document.getElementById("contact");
+                if (element) element.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-5 py-2.5 rounded-xl"
             >
               <span>Get in Touch</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
-            </motion.a>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Button>
           </div>
 
           {/* Mobile Menu Actions */}

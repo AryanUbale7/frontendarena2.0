@@ -2,10 +2,10 @@
 
 import React from "react";
 import { Search, Compass, Code, ShieldCheck, Rocket, HeartHandshake } from "lucide-react";
-import { motion } from "framer-motion";
-import Reveal from "@/components/Reveal";
+import Reveal from "@/components/animations/Reveal";
+import Card from "@/components/ui/Card";
 
-export default function Process() {
+export default function ProcessSection() {
   const steps = [
     {
       num: "01",
@@ -61,39 +61,38 @@ export default function Process() {
           </div>
         </Reveal>
 
-        {/* Steps Grid */}
+        {/* Steps Grid using Reusable Card UI primitive */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-primary/20 dark:hover:border-primary/20 transition-all duration-500"
-              >
-                {/* Number & Icon Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
-                    <Icon className="w-5 h-5" />
+              <Reveal key={index} delay={index * 0.1}>
+                <Card 
+                  className="group relative flex flex-col justify-between h-full hover:border-primary/20 dark:hover:border-primary/20"
+                >
+                  <div>
+                    {/* Number & Icon Header */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="font-numbers font-extrabold text-3xl text-slate-200 dark:text-slate-850 group-hover:text-primary/30 transition-colors duration-500">
+                        {step.num}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
+                      {step.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-paragraph leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
-                  <span className="font-numbers font-extrabold text-3xl text-slate-200 dark:text-slate-850 group-hover:text-primary/30 transition-colors duration-500">
-                    {step.num}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-paragraph leading-relaxed">
-                  {step.description}
-                </p>
-              </motion.div>
+                </Card>
+              </Reveal>
             );
           })}
         </div>

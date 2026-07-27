@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Reveal from "@/components/Reveal";
+import Reveal from "@/components/animations/Reveal";
 
-export default function FAQ() {
+export default function FAQSection() {
   const faqs = [
     {
       q: "Do you specialize in both design and engineering?",

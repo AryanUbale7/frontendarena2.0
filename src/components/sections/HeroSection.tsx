@@ -3,10 +3,11 @@
 import React, { useRef } from "react";
 import { ArrowRight, Code, Sparkles, Shield, Cpu, Layers } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import Counter from "@/components/Counter";
-import Magnetic from "@/components/Magnetic";
+import Counter from "@/components/widgets/Counter";
+import Magnetic from "@/components/animations/Magnetic";
+import Button from "@/components/ui/Button";
 
-export default function Hero() {
+export default function HeroSection() {
   const stats = [
     { value: 150, suffix: "+", label: "Projects Completed" },
     { value: 50, suffix: "+", label: "Clients Worldwide" },
@@ -37,7 +38,7 @@ export default function Hero() {
     y.set(0);
   };
 
-  // Text Reveal animations config
+  // Text Reveal config
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -118,28 +119,32 @@ export default function Hero() {
           >
             {/* Magnetic primary button */}
             <Magnetic>
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                href="#contact"
-                className="group inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 w-full sm:w-auto"
+              <Button
+                variant="primary"
+                onClick={() => {
+                  const element = document.getElementById("contact");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="w-full sm:w-auto px-8 py-3.5"
               >
                 <span>Start Your Project</span>
                 <ArrowRight className="w-4 h-4" />
-              </motion.a>
+              </Button>
             </Magnetic>
             
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="#portfolio"
-              className="inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-950/40 text-slate-700 dark:text-slate-200 font-bold text-sm hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors duration-300"
+            <Button
+              variant="outline"
+              onClick={() => {
+                const element = document.getElementById("portfolio");
+                if (element) element.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-8 py-3.5"
             >
               <span>Explore Portfolio</span>
-            </motion.a>
+            </Button>
           </motion.div>
 
-          {/* Statistics Grid with Counter */}
+          {/* Statistics Grid */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

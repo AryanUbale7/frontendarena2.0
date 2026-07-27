@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter, Space_Grotesk } from "next/font/google";
-import Cursor from "@/components/Cursor";
-import LoadingScreen from "@/components/LoadingScreen";
+import Cursor from "@/components/animations/Cursor";
+import LoadingScreen from "@/components/animations/LoadingScreen";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({

@@ -12,11 +12,9 @@ export default function Magnetic({ children }: { children: React.ReactNode }) {
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     
-    // Calculate distance from center of the button
     const x = clientX - (left + width / 2);
     const y = clientY - (top + height / 2);
     
-    // Magnetic pull limit (0.35 factor)
     setPosition({ x: x * 0.35, y: y * 0.35 });
   };
 
