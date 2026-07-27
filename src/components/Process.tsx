@@ -45,11 +45,11 @@ export default function Process() {
   ];
 
   return (
-    <section id="process" className="py-24 relative bg-slate-50/30 dark:bg-slate-900/10">
+    <section id="process" className="py-24 relative bg-slate-50/20 dark:bg-slate-900/5">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-2xl text-center mx-auto mb-20">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Our Process</h2>
+          <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Our Process</h2>
           <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
             How We Bring Ideas to Life.
           </p>
@@ -68,15 +68,15 @@ export default function Process() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 hover:bg-slate-50/50 dark:hover:bg-slate-900/20 transition-all duration-300"
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-primary/20 dark:hover:border-primary/20 transition-all duration-500"
               >
                 {/* Number & Icon Header */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="font-numbers font-extrabold text-3xl text-slate-200 dark:text-slate-800 group-hover:text-primary/30 transition-colors duration-300">
+                  <span className="font-numbers font-extrabold text-3xl text-slate-200 dark:text-slate-850 group-hover:text-primary/30 transition-colors duration-500">
                     {step.num}
                   </span>
                 </div>

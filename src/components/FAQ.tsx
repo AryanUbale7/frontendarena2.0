@@ -31,11 +31,11 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 relative bg-slate-50/30 dark:bg-slate-900/10">
+    <section id="faq" className="py-24 relative bg-slate-50/20 dark:bg-slate-900/5">
       <div className="max-w-4xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">FAQ</h2>
+          <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">FAQ</h2>
           <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
             Frequently Asked Questions.
           </p>
@@ -48,15 +48,15 @@ export default function FAQ() {
             return (
               <div
                 key={index}
-                className="border border-slate-200/50 dark:border-slate-800/50 rounded-2xl overflow-hidden bg-white dark:bg-slate-950/40"
+                className="border border-slate-200/50 dark:border-slate-800/50 rounded-2xl overflow-hidden bg-white dark:bg-slate-950/40 shadow-sm"
               >
-                {/* Header Toggle Clickable */}
+                {/* Header Toggle */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full p-6 flex justify-between items-center text-left text-slate-900 dark:text-white hover:bg-slate-50/50 dark:hover:bg-slate-900/15 transition-colors duration-200"
+                  className="w-full p-6 flex justify-between items-center text-left text-slate-900 dark:text-white hover:bg-slate-50/50 dark:hover:bg-slate-900/15 transition-colors duration-250 cursor-pointer"
                 >
                   <span className="font-bold text-sm sm:text-base">{faq.q}</span>
-                  <div className="flex-shrink-0 ml-4 p-1.5 rounded-lg bg-slate-100 dark:bg-slate-850 text-slate-500 dark:text-slate-400">
+                  <div className="flex-shrink-0 ml-4 p-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-550 dark:text-slate-400">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
@@ -68,9 +68,9 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-800/50 text-paragraph text-sm leading-relaxed">
+                      <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-900/50 text-paragraph text-sm leading-relaxed">
                         {faq.a}
                       </div>
                     </motion.div>

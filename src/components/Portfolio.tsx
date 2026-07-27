@@ -51,18 +51,18 @@ export default function Portfolio() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div className="max-w-xl">
             <h2 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Our Work</h2>
-            <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.15]">
+            <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.12]">
               Showcasing Engineering Craftsmanship.
             </p>
           </div>
 
           {/* Filtering Tabs */}
-          <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl w-fit">
+          <div className="flex flex-wrap gap-2 mt-6 md:mt-0 p-1 bg-slate-100 dark:bg-slate-900 rounded-2xl w-fit border border-slate-200/50 dark:border-slate-800/50">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all duration-300 ${
+                className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-300 ${
                   activeTab === cat
                     ? "bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm"
                     : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -83,17 +83,17 @@ export default function Portfolio() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 key={project.title}
-                className="group relative rounded-2xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300"
+                className="group relative rounded-3xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-primary/20 dark:hover:border-primary/20 transition-all duration-500"
               >
-                {/* Visual Gradient Card Placeholder */}
-                <div className={`w-full h-56 rounded-xl bg-gradient-to-tr ${project.gradient} mb-6 relative overflow-hidden flex items-center justify-center`}>
-                  {/* Floating visual elements inside card */}
+                {/* Visual Gradient Card */}
+                <div className={`w-full h-56 rounded-2xl bg-gradient-to-tr ${project.gradient} mb-6 relative overflow-hidden flex items-center justify-center`}>
                   <div className="absolute inset-0 bg-black/10 mix-blend-overlay" />
                   <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer shadow-lg"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer shadow-lg hover:bg-white/30 transition-colors duration-300"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </motion.div>
@@ -101,11 +101,11 @@ export default function Portfolio() {
 
                 {/* Info */}
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono tracking-wider uppercase text-primary font-bold">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-primary">
                       {project.category}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-medium text-paragraph">
+                    <span className="px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-900 text-[10px] font-semibold text-paragraph border border-slate-200/20 dark:border-slate-800/20 font-numbers">
                       {project.tag}
                     </span>
                   </div>
@@ -119,10 +119,10 @@ export default function Portfolio() {
                   </p>
                 </div>
 
-                {/* Case Study Actions */}
+                {/* Explore Case Study */}
                 <a
                   href="#contact"
-                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors duration-200"
+                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors duration-300"
                 >
                   <span>Explore Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />

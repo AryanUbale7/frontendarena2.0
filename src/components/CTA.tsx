@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function CTA() {
@@ -22,11 +22,11 @@ export default function CTA() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] dark:bg-primary/10 pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-6">
-        <div className="relative rounded-3xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50 bg-gradient-to-br from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 p-8 sm:p-16 text-center shadow-xl">
+        <div className="relative rounded-[2.5rem] overflow-hidden border border-slate-200/50 dark:border-slate-800/50 bg-gradient-to-br from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 p-8 sm:p-16 text-center shadow-xl">
           {/* Micro-badge */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-6">
-            <Sparkles className="w-4 h-4 animate-spin-slow" />
-            <span className="text-xs font-bold uppercase tracking-wider">Let's Collaborate</span>
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-primary/10 text-primary mb-6">
+            <Sparkles className="w-4 h-4 animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-wider">Let's Collaborate</span>
           </div>
 
           {/* Heading */}
@@ -51,15 +51,17 @@ export default function CTA() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="flex-grow px-5 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-primary/50 text-sm transition-all duration-300"
+                className="flex-grow px-5 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-450 dark:placeholder-slate-500 focus:outline-none focus:ring-4 focus:ring-primary/15 focus:border-primary text-sm transition-all duration-350"
               />
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm shadow-lg shadow-primary/15 hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 cursor-pointer"
               >
                 <span>Let's Talk</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </motion.button>
             </form>
           ) : (
             <motion.div

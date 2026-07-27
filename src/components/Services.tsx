@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Laptop, Cpu, Palette, Layout, Server, LineChart, Code, ArrowRight } from "lucide-react";
+import { Laptop, Cpu, Palette, Layout, Server, Code, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Services() {
@@ -12,6 +12,7 @@ export default function Services() {
       description: "Fast, responsive, and SEO-optimized marketing sites designed with premium aesthetics and smooth animations.",
       color: "text-blue-500",
       bgColor: "bg-blue-500/10",
+      borderGlow: "group-hover:border-blue-500/30",
     },
     {
       icon: Server,
@@ -19,6 +20,7 @@ export default function Services() {
       description: "Scalable SaaS architectures built on robust databases, secure authentication systems, and cloud infra blueprints.",
       color: "text-purple-500",
       bgColor: "bg-purple-500/10",
+      borderGlow: "group-hover:border-purple-500/30",
     },
     {
       icon: Cpu,
@@ -26,6 +28,7 @@ export default function Services() {
       description: "Custom AI integrations utilizing LLM models, vector caches, semantic searching engines, and intelligent copilots.",
       color: "text-cyan-500",
       bgColor: "bg-cyan-500/10",
+      borderGlow: "group-hover:border-cyan-500/30",
     },
     {
       icon: Palette,
@@ -33,6 +36,7 @@ export default function Services() {
       description: "Figma-level visual layout design specifications, typography systems, dark themes, and motion design guidelines.",
       color: "text-pink-500",
       bgColor: "bg-pink-500/10",
+      borderGlow: "group-hover:border-pink-500/30",
     },
     {
       icon: Layout,
@@ -40,6 +44,7 @@ export default function Services() {
       description: "Interactive single page applications built with React, Next.js App Router, and lightweight state management caches.",
       color: "text-emerald-500",
       bgColor: "bg-emerald-500/10",
+      borderGlow: "group-hover:border-emerald-500/30",
     },
     {
       icon: Code,
@@ -47,16 +52,17 @@ export default function Services() {
       description: "Tailored microservices architectures, API designs, webhook interfaces, and database configurations.",
       color: "text-orange-500",
       bgColor: "bg-orange-500/10",
+      borderGlow: "group-hover:border-orange-500/30",
     },
   ];
 
   return (
-    <section id="services" className="py-24 bg-slate-50/30 dark:bg-slate-900/10 relative">
+    <section id="services" className="py-24 bg-slate-50/20 dark:bg-slate-900/5 relative">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Our Expertise</h2>
-          <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.15]">
+        <div className="max-w-2xl mb-20">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">Our Expertise</h2>
+          <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-[1.12]">
             Engineering Premium Digital Products.
           </p>
           <p className="mt-4 text-paragraph text-sm sm:text-base leading-relaxed">
@@ -74,13 +80,13 @@ export default function Services() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 hover:bg-slate-50/50 dark:hover:bg-slate-900/20 hover:scale-[1.02] hover:shadow-xl dark:hover:shadow-primary/5 hover:border-primary/20 dark:hover:border-primary/20 transition-all duration-300 flex flex-col justify-between"
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={`group p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 bg-white dark:bg-slate-950/40 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:bg-slate-50/50 dark:hover:bg-slate-900/15 ${service.borderGlow} transition-all duration-500 flex flex-col justify-between`}
               >
                 <div>
                   {/* Icon Badge */}
-                  <div className={`w-12 h-12 rounded-xl ${service.bgColor} flex items-center justify-center ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="w-6 h-6" />
+                  <div className={`w-12 h-12 rounded-2xl ${service.bgColor} flex items-center justify-center ${service.color} mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                    <Icon className="w-5 h-5" />
                   </div>
 
                   {/* Title */}
@@ -89,18 +95,18 @@ export default function Services() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-paragraph leading-relaxed mb-6">
+                  <p className="text-sm text-paragraph leading-relaxed mb-8">
                     {service.description}
                   </p>
                 </div>
 
-                {/* Learn More Link */}
+                {/* Discuss Project */}
                 <a
                   href="#contact"
-                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-primary hover:text-secondary group/link transition-colors duration-200"
+                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary group-hover:underline transition-colors duration-300"
                 >
                   <span>Discuss Project</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               </motion.div>
             );
